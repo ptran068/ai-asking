@@ -118,3 +118,4 @@ loaders = [
 
 TEMPLATES[0]["OPTIONS"].update({"loaders": loaders})
 
+OPENAI_API_KEY = env('OPENAI_API_KEY')
