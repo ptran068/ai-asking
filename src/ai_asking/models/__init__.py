@@ -1,0 +1,1 @@
+from email_store.models.email_store import EmailStoreModel
