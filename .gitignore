@@ -1,0 +1,98 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Packaging files:
+*.egg*
+*.lock
+*.tmp
+# Sphinx docs:
+build
+
+# SQLite3 database files:
+*.db
+*.sqlite3
+*.sqlite
+
+# Logs:
+*.log
+*.prof
+*-log-*.txt
+
+# Environment variables
+local.env
+config.env
+
+# Django stuff:
+*.mo
+*.pot
+
+# Eclipse
+.project
+.pydevproject
+.settings
+
+# Linux Editors
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+.\#*
+*.swp
+*.swo
+
+# Rope
+.ropeproject
+
+# Mac
+.DS_Store
+._*
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+#virtualenv
+bin
+lib
+local
+include
+
+# Project settings
+./site/
+/nbproject/
+.buildpath
+.project
+/.settings/
+/.idea
+/lc/nbproject/private
+*node_modules*
+package-lock.json
+/src/cache/*
+*.sh
+*.sh
+config.env
+pyvenv.cfg
+*.sh
+.coverage
+*coverage.*
+*junit*
+!/.github/actions/check_flake8/entrypoint.sh
+/src/wd_jobs/*.json
+.isort.cfg
+!poetry.lock
+
+#visualcode
+.vscode
+.python-version
+*uiframe_url.py
+s3_presign.txt
+/.mypy_cache/
