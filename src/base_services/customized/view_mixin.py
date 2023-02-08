@@ -6,3 +6,5 @@ class GenericViewMixin(viewsets.ViewSet):
     lookup_field = "pk"
     lookup_url_kwarg = None
 
+
+

@@ -9,7 +9,8 @@ REST_FRAMEWORK = {
     ],
     "EXPIRED_FOREVER": "2000-10-10 00:00:00",
     "DEFAULT_THROTTLE_RATES": {
-        "custom_user": "180/minute",
+        "normal_user": "15/minute",
+        "premium_user": "60/minute",
     },
     "OVERRIDE_THROTTLE_RATES": {"special": "10000/hour"},
 }
