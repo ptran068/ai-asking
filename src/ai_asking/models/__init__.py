@@ -1,1 +1,1 @@
-from email_store.models.email_store import EmailStoreModel
+from ai_asking.models.question import QuestionModel, SubQuestionAnswerModel

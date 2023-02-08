@@ -49,4 +49,5 @@ class ValidationErr:
         "message": _("This is an old forgot password link. Please reset and try again."),
     }
     GENERAL = {"code": 1142, "message": "{0}"}
+    GPT_ERR = {"code": 1143, "message": "{0}"}
 

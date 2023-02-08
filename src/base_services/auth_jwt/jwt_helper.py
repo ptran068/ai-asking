@@ -51,7 +51,7 @@ class BaseToken:
 
 
 class ChromeExtensionJWTToken(BaseToken):
-    JWT_EXP_MINUTES = 2
+    JWT_EXP_MINUTES = 120
 
     def encode_token(self, user_id: int, email: str, has_staff_access: bool = False):
         payload = {
