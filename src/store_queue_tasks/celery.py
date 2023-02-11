@@ -18,10 +18,10 @@ import datetime
 now = datetime.datetime.now()
 
 app.conf.beat_schedule = {
-    # Executes every Monday morning at 7:30 a.m.
-    'get_added_emails_in_current_month': {
-        'task': 'store_queue_tasks.tasks.get_added_emails.get_current_mails',
-        'schedule': crontab(hour=9, minute=44)
+    # Executes every 00:00
+    'clear_used_token_by_day': {
+        'task': 'store_queue_tasks.tasks.clear_used_token_by_day.clear_used_tokens',
+        'schedule': crontab(hour=0, minute=0)
     },
 
 }

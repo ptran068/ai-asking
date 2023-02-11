@@ -13,18 +13,6 @@ from base_services.throttles.user import UserAskingThrottle
 class AIAskingViewSet(GenericViewMixin):
     throttle_classes = (UserAskingThrottle,)
 
-    @action(detail=False, methods=[HttpMethod.POST], permission_classes=())
-    def ask_question(self, request):
-        data = request.data.copy()
-        serializer = AskingSerializer(data=data)
-        if serializer.is_valid(raise_exception=True):
-            is_first_ques = data.get('is_first_question') or False
-            answer = AIAskingService.get_answer_from_question(
-                data.get('question'), max_token=256, is_first_question=is_first_ques
-            )
-            data = dict(answer=answer)
-            return Response(data, status=status.HTTP_200_OK)
-
     @action(detail=False, methods=[HttpMethod.POST])
     def user_ask_question(self, request):
         data = request.data.copy()
