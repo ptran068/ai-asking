@@ -1,1 +1,1 @@
-from ai_asking.models.question import QuestionModel, SubQuestionAnswerModel
+from ai_asking.models.question import ConversationModel, QuestionAnswerModel
