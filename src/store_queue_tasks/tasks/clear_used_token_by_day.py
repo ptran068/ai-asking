@@ -3,14 +3,16 @@ from email_store.services.email_store import EmailStoreService
 from store_queue_tasks.celery import app as celery_app
 from celery.utils.log import get_task_logger
 
+from users.models import User
+
 logger = get_task_logger(__name__)
 
 
 @celery_app.task
-def get_current_mails():
-    logger.info("start scheduler.........")
+def clear_used_tokens():
+    logger.info("start clear used tokens.........")
 
-    email_stores = EmailStoreModel.objects.all()
-    total = EmailStoreService.count_total_added_emails_current_month(email_stores)
-    logger.info(f"Total added emails in this month: {total}")
+    User.objects.update(used_tokens=0)
+
+    logger.info(f"...............Done.................")
 

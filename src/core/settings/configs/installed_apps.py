@@ -1,7 +1,6 @@
 from core.settings import env
 
 # Application definition
-EMAIL_STORE = "email_store"
 USER = "users"
 AI_ASKING = "ai_asking"
 
@@ -21,7 +20,6 @@ THIRD_PARTY_APPS = (
 IMPORT_EXPORT_USE_TRANSACTIONS = False
 
 LOCAL_APPS = (
-    EMAIL_STORE,
     USER,
     AI_ASKING,
 )
