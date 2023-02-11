@@ -21,10 +21,10 @@ class AIAskingViewSet(GenericViewMixin):
             user = request.user
             if user and AIAskingService.has_asking_access(user):
                 is_first_ques = data.get('is_first_question') or False
-                question_id = data.get('question_id')
+                conversation_id = data.get('conversation_id')
                 answer = AIAskingService.get_answer_from_question(
                     data.get('question'), max_token=2000,
-                    is_first_question=is_first_ques, user=user, question_id=question_id
+                    is_first_question=is_first_ques, user=user, conversation_id=conversation_id
                 )
                 data = dict(answer=answer)
                 return Response(data, status=status.HTTP_200_OK)

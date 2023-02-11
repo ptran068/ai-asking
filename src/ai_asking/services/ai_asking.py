@@ -4,7 +4,7 @@ from django.conf import settings
 
 import openai
 
-from ai_asking.models import QuestionModel, SubQuestionAnswerModel
+from ai_asking.models import ConversationModel, QuestionAnswerModel
 from users.constants.constants import AccountType
 
 openai.api_key = settings.OPENAI_API_KEY
@@ -22,7 +22,7 @@ class AIAskingService:
         return has_access
 
     @classmethod
-    def get_answer_from_question(cls, question: str, max_token: int, is_first_question: bool, question_id: int, user=None):
+    def get_answer_from_question(cls, question: str, max_token: int, is_first_question: bool, conversation_id: int, user=None):
         #  refer: https://platform.openai.com/docs/api-reference/completions/create
         answer = ""
         with contextlib.suppress(Exception):
@@ -36,7 +36,7 @@ class AIAskingService:
                         question=question,
                         answer=answer,
                         max_token=max_token,
-                        question_id=question_id,
+                        conversation_id=conversation_id,
                         user=user
                     )
                     user.save()
@@ -55,17 +55,17 @@ class AIAskingService:
         return response
 
     @classmethod
-    def save_question_answer(cls, is_first_question: bool, question: str, answer: str, max_token: int, user, question_id=None):
-        if is_first_question and not question_id:
+    def save_question_answer(cls, is_first_question: bool, question: str, answer: str, max_token: int, user, conversation_id=None):
+        if is_first_question and not conversation_id:
             prompt = f"What is the title of this conversation about the following question:\n{question}"
             title_response = cls.call_gpt_api(prompt, max_token)
             title = title_response.choices[0].text
-            new_question = QuestionModel(title=title, user_id=user.id)
+            new_question = ConversationModel(title=title, user_id=user.id)
             new_question.save()
-            sub_ques = SubQuestionAnswerModel(question=new_question, question_content=question, answer=answer)
+            sub_ques = QuestionAnswerModel(question=new_question, question_content=question, answer=answer)
             sub_ques.save()
         else:
-            sub_ques = SubQuestionAnswerModel(question_id=question_id, question_content=question, answer=answer)
+            sub_ques = QuestionAnswerModel(conversation_id=conversation_id, question_content=question, answer=answer)
             sub_ques.save()
 
 

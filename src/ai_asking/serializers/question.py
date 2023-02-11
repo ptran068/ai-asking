@@ -1,21 +1,21 @@
 from rest_framework import serializers
 
-from ai_asking.models import QuestionModel, SubQuestionAnswerModel
+from ai_asking.models import ConversationModel, QuestionAnswerModel
 
 
 class SubQuestionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = SubQuestionAnswerModel
+        model = QuestionAnswerModel
         fields = "__all__"
 
 
 class QuestionSerializer(serializers.ModelSerializer):
-    sub_question_answer = SubQuestionSerializer(many=True, required=False)
+    question_answers = SubQuestionSerializer(many=True, required=False)
 
     class Meta:
-        model = QuestionModel
-        fields = ['title', 'id', 'sub_question_answer']
+        model = ConversationModel
+        fields = ['title', 'id', 'question_answers']
 
 
-class EditQuestionSerializer(serializers.Serializer):
+class EditConvoSerializer(serializers.Serializer):
     title = serializers.CharField(allow_blank=False, allow_null=False, max_length=255)
